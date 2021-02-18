@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <iomanip>
 #include <cstdlib>
 
 using namespace std;
@@ -22,6 +23,8 @@ int main(int argc, char* argv[]){
     int min = atoi(argv[2]);
     int max = atoi(argv[3]);
 
+    srand(time(nullptr));
+
     int numFilas = datosGenerar / 10;
 
     for (int i = 0; i < numFilas; i++)
@@ -30,8 +33,7 @@ int main(int argc, char* argv[]){
 
         for (int j = 0; j < 10; j++)
         {   
-            srand(time(NULL));
-            cout << randInt(min, max) << "  ";
+            cout << setw(6) << randInt(min, max);
         }
         
     }
