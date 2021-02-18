@@ -5,8 +5,8 @@
 
 using namespace std;
 
-/* Pre: a <= b
- * Post: randInt(a, b) = α ∈ [a, b]
+/* Pre: r <= s
+ * Post: randDouble(r, s) = I ∧ r <= I <= s
  */
 int randInt(const int a, const int b){
 
