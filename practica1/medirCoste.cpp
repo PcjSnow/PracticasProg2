@@ -9,13 +9,60 @@ using namespace std;
 /* Pre: r <= s
  * Post: randDouble(r, s) = I ∧ r <= I <= s
  */
-int randInt(const int a, const int b){
+int randInt(const int a, const int b) {
 
     //time_t semilla = time(nullptr);
     //srand(semilla);
 
     return a + rand() % (b - a + 1);
 }
+
+/* Pre: #v >= 20
+ * Post: Ha mostrado por salida estándar los 20 primeros componentes
+ *       del vector v.
+ */
+void mostrar20primeros(const int v[]) {
+
+    int index = 0;
+
+    for (int i = 0; i < 2; i++)
+    {
+        cout << endl;
+
+        for (int j = 0; j < 10; j++)
+        {
+            cout << setw(6) << v[index];
+            index++;
+        }
+        
+    }
+    
+}
+
+/* Pre: #v >= 20 ⋀ n = #v
+ * Post: Ha mostrado por salida estándar los 20 últimos componentes
+ *       del vector v.
+ */
+void mostrar20ultimos(const int v[], int n) {
+
+    int index = n - 20;
+
+        for (int i = 0; i < 2; i++)
+        {
+            cout << endl;
+
+            for (int j = 0; j < 10; j++)
+            {
+                cout << setw(6) << v[index - 1];
+                index++;
+            }
+            
+        }
+
+
+}
+
+
 
 int main(int argc, char* argv[]){
 
@@ -36,36 +83,14 @@ int main(int argc, char* argv[]){
     cout << "Datos a ordenar: ";
 
     //20 primeros
-    int index = 0;
-
-    for (int i = 0; i < 2; i++)
-    {
-        cout << endl;
-
-        for (int j = 0; j < 10; j++)
-        {
-            cout << setw(6) << v[index];
-            index++;
-        }
-        
-    }
+    mostrar20primeros(v);
 
     cout << endl << endl;
 
     //20 últimos
-    index = datosGenerar - 1;
+    mostrar20ultimos(v, datosGenerar);
 
-    for (int i = 0; i < 2; i++)
-    {
-        cout << endl;
 
-        for (int j = 0; j < 10; j++)
-        {
-            cout << setw(6) << v[datosGenerar - 1 -index];
-            index--;
-        }
-        
-    }
 
     cout << "\n\nOrdenando " << datosGenerar << " datos enteros ..." << endl;
 
@@ -78,36 +103,12 @@ int main(int argc, char* argv[]){
     cout << "\n\nDatos ordendos: ";
 
     //20 primeros
-    index = 0;
-
-    for (int i = 0; i < 2; i++)
-    {
-        cout << endl;
-
-        for (int j = 0; j < 10; j++)
-        {
-            cout << setw(6) << v[index];
-            index++;
-        }
-        
-    }
+    mostrar20primeros(v);
 
     cout << endl << endl;
 
     //20 últimos
-    index = 20;
-
-    for (int i = 0; i < 2; i++)
-    {
-        cout << endl;
-
-        for (int j = 0; j < 10; j++)
-        {
-            cout << setw(6) << v[datosGenerar - 1 -index];
-            index--;
-        }
-        
-    }
+    mostrar20ultimos(v, datosGenerar);
 
     cout << "\n\nTiempo de CPU para ordenar " << datosGenerar << " enteros: "
          << segundos << " segundos" << endl;
