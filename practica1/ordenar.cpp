@@ -31,6 +31,7 @@ void ordenar(int v[], const int n) {
         // Los datos de v[0..i-1] son los menores y ya están ordenados
         // Selecciona el dato menor de v[i..n-1]
         int iMenor = i;
+
         for (int j = i + 1; j < n; ++j) {
             // v[iMenor] es el menor de v[i..j-1]
             if (v[j] < v[iMenor]) {

@@ -65,7 +65,18 @@ void probarNumCifras() {
 // Pre:  <n> es el número natural y <b> está comprendido entre 2 y 10
 // Post: Informa si los valores devueltos al ejecutar cifra(n, i, b) corresponden
 //       o no a la i-ésima cifra de <n>, cuando este número se escribe en base <b>
-void probarCifra(const int n, const int b) {
+void probarCifra(const int n, const int i, const int b, const int laCifra) {
+
+    int r =  cifra(n, i, b);
+
+    if (r == laCifra)
+    {
+        cout << "Ok! cifra(" << n << ", " << i << ", " << b << ") = " << laCifra << endl;
+    }
+    else {
+        cout << "Mal! cifra(" << n << ", " << i << ", " << b << ") = " << r <<
+                " pero debiera ser " << laCifra << endl;
+    }
 }
 
 
@@ -80,12 +91,23 @@ void probarCifra() {
 // Post: Informa si el valor devuelto al ejecutar cifraMayor(n, b) coincide con el
 //       de <laMyor>, cuando <n> se escribe en base <b>
 void probarCifraMayor(const int n, const int b, const int laMayor) {
+
+    int r =  cifraMayor(n, b);
+
+    if (r == laMayor)
+    {
+        cout << "Ok! cifraMayor(" << n << ", " << b << ") = " << laMayor << endl;
+    }
+    else {
+        cout << "Mal! cifraMayor(" << n << ", " << b << ") = " << r <<
+                " pero debiera ser " << laMayor << endl;
+    }
 }
 
 
 // Prueba el comportamiento de cifraMayor(n,b) para diferentes números naturales
 // en las bases de numeración 2, 8 y 10
-void probarCifraMayor() {
+void probarCifraMayor(const int n, const int b) {
 }
 
 
@@ -94,6 +116,18 @@ void probarCifraMayor() {
 // Post: Informa si el valor devuelto al ejecutar cifraMasSignificativa(n, b) coincide
 //       con el de <laMasSignificativa>, cuando <n> se escribe en base <b>
 void probarCifraMasSignificativa(const int n, const int b, const int laMasSignificativa) {
+
+    int r =  cifraMasSignificativa(n, b);
+
+    if (r == laMasSignificativa)
+    {
+        cout << "Ok! cifraMasSignificativa(" << n << ", " << b << ") = " << laMasSignificativa << endl;
+    }
+    else {
+        cout << "Mal! cifraMasSignificativa(" << n << ", " << b << ") = " << r <<
+                " pero debiera ser " << laMasSignificativa << endl;
+    }
+
 }
 
 
@@ -108,6 +142,16 @@ void probarCifraMasSignificativa() {
 // Post: Informa si el valor devuelto al ejecutar sumaCifras(n, b) coincide
 //       con el de <laSuma>, cuando <n> se escribe en base <b>
 void probarSumaCifras(const int n, const int b, const int laSuma) {
+    int r =  sumaCifras(n, b);
+
+    if (r == laSuma)
+    {
+        cout << "Ok! sumaCifras(" << n << ", " << b << ") = " << laSuma << endl;
+    }
+    else {
+        cout << "Mal! sumaCifras(" << n << ", " << b << ") = " << r <<
+                " pero debiera ser " << laSuma << endl;
+    }
 }
 
 
@@ -121,11 +165,44 @@ void probarSumaCifras() {
 // en el módulo cálculos
 int main() {
     // Pruebas del comportamiento de numCifras(n,b)
-    probarNumCifras ();
+    probarNumCifras (123, 10, 3);
+    probarNumCifras();
+    cout << endl;
     // Pruebas del comportamiento de cifra(n,i,)
+    probarCifra(1, 1, 10, 1);
+    probarCifra(21, 1, 10, 1);
+    probarCifra(824, 3, 10, 8);
+    probarCifra(1027, 2, 10, 2);
+    probarCifra(4, 1, 2, 0);
+    probarCifra(5, 3, 2, 1);
+    probarCifra(8, 4, 2, 1);
+
+    cout << endl;
     // Pruebas del comportamiento de cifraMayor(n,b)
+    probarCifraMayor(1, 10, 1);
+    probarCifraMayor(15, 10, 5);
+    probarCifraMayor(1123, 10, 3);
+    probarCifraMayor(92, 10, 9);
+    probarCifraMayor(1, 2, 1);
+    probarCifraMayor(8, 2, 1);
+
+    cout << endl;
     // Pruebas del comportamiento de cifraMasSignificativa(n,b)
+    probarCifraMasSignificativa(1, 10, 1);
+    probarCifraMasSignificativa(12, 10, 1);
+    probarCifraMasSignificativa(32, 10, 3);
+    probarCifraMasSignificativa(578452, 10, 5);
+    probarCifraMasSignificativa(4, 2, 1);
+
+    cout << endl;
     // Pruebas del comportamiento de sumaCifras(n,b)
+    probarSumaCifras(4, 2, 1);
+    probarSumaCifras(5, 2, 2);
+    probarSumaCifras(10, 10, 1);
+    probarSumaCifras(32, 2, 1);
+    probarSumaCifras(1245, 10, 12);
+
+    cout << endl;
     // Fin del programa de pruebas
     return 0;
 }

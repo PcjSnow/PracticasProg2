@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+# File:   Make_pruebas01
+# Author: Pablo Chueca Julián
+# Date:   febrero 2021
+# Coms:   Ejemplo de Makefile para la práctica 2 de Programación II
+#         
+#         ...
+#         "make clean" borra todo lo generado, si existe (ver línea 40-50)
+#------------------------------------------------------------------------------
+
+#---------------------------------------------------------
+# Definición de macros
+CC = g++
+CPPFLAGS = -I. -std=c++11      #opciones de compilación
+LDFLAGS =                      #opciones de linkado
+RM = rm -f
+
+all: pruebas01
+#-----------------------------------------------------------
+# Compilacion
+calculos.o: calculos.cpp calculos.hpp
+	${CC} -c calculos.cpp ${CPPFLAGS}
+
+pruebas01.o: pruebas01.cpp
+	${CC} -c pruebas01.cpp ${CPPFLAGS}
+#Linkado
+pruebas01: calculos.o pruebas01.o
+	${CC} calculos.o pruebas01.o -o pruebas01 ${LDFLAGS}
+
